@@ -1,0 +1,13 @@
+## Plot 1 Code
+
+myhousedata <- read.table("household_power_consumption.txt", header=T, sep=';' , na.strings="?")
+my_data <- rbind(myhousedata[myhousedata$Date=="1/1/2007",], myhousedata[myhousedata$Date=="2/2/2007",])
+
+## create new verable with Date and time joined
+
+my_data$Date <- as.Date(my_data$Date, "%d/%m%Y")
+my_data <- cbind(my_data, "DateTime" = as.POSIXCT(paste(my_data$Date, my_data$Time)))
+
+##plotting code for plot 1
+
+hist(as.numeric(my_data$Global_active_power), col="blue", main="Global Active Power", xlab="Global Active Power(kilowatts)", ylab="Frequency")
