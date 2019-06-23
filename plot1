@@ -1,17 +1,14 @@
 ## Plot 1 Code
 
 myhousedata <- read.table("exdata_data_household_power_consumption/household_power_consumption.txt", header=T, sep=';' , na.strings="?",nrows = 1000)
+mine_data <- rbind(myhousedata[myhousedata$Date=="1/1/2007",], myhousedata[myhousedata$Date=="2/2/2007",])
 
-my_data <- rbind(myhousedata[myhousedata$Date=="1/1/2007",], myhousedata[myhousedata$Date=="2/2/2007",])
+## Create New Variable with Date 
+mine_data$Date <- as.Date(mine_data$Date, format="%d/%m/%Y")
 
-## create new verable with Date and time joined
+##Ploting Code for Plot 1
+hist(mine_data$Global_active_power, main="Global Active Power", xlab = "Global Active Power (kilowatts)", ylab = "Frequency", col = "Red")
 
-my_data$Date <- as.Date(my_data$Date, "%d/%m%Y")
-my_data <- cbind(my_data, "DateTime" = as.POSIXct(paste(my_data$Date, my_data$Time)))
-
-##plotting code for plot 1
-
-hist(as.numeric(my_data$Global_active_power), col="blue", main="Global Active Power", xlab="Global Active Power(kilowatts)", ylab="Frequency")
 
 
 ## Plot 2 code
