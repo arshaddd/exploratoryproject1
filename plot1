@@ -11,3 +11,17 @@ my_data <- cbind(my_data, "DateTime" = as.POSIXCT(paste(my_data$Date, my_data$Ti
 ##plotting code for plot 1
 
 hist(as.numeric(my_data$Global_active_power), col="blue", main="Global Active Power", xlab="Global Active Power(kilowatts)", ylab="Frequency")
+
+
+## Plot 2 code
+
+plot(my_data$Global_active_power ~ my_data$DateTime, type="1", xlab="", ylab="Global Actice Power(kilowatts)")
+
+## plot 3 code
+
+with(my_data, {plot(sub_metering_1 ~ DateTime, type="1", xlab="", ylab="Energy Sub Metering")})
+line(my_data$sub_metering_2 ~ my_data$DateTime, col = 'Green')
+line(my_data$sub_metering_3 ~ my_data$DateTime, col = 'Red')
+legend("topright", lty=1, lwd=3, col=c("black", "Green", "Red"), legend=c("sub_metering_1", "sub_metyering_2", "sub_metering_3"))
+
+##plot 4 code
