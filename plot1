@@ -25,3 +25,13 @@ line(my_data$sub_metering_3 ~ my_data$DateTime, col = 'Red')
 legend("topright", lty=1, lwd=3, col=c("black", "Green", "Red"), legend=c("sub_metering_1", "sub_metyering_2", "sub_metering_3"))
 
 ##plot 4 code
+
+par(mfrow=c(2,2))
+plot(my_data$Global_active_power ~ my_data$DateTime, type="1")
+plot(my_data$Voltage ~ my_data$DateTime, type="1")
+
+with(my_data, {plot(sub_metering_1 ~ DateTime, type="1")})
+line(my_data$sub_metering_2 ~ my_data$DateTime, col = 'Green')
+line(my_data$sub_metering_3 ~ my_data$DateTime, col = 'Red')
+
+plolt(my_data$Global_reactive_power ~ my_data$DateTime, type="1")
