@@ -10,26 +10,3 @@ mine_data$Date <- as.Date(mine_data$Date, format="%d/%m/%Y")
 hist(mine_data$Global_active_power, main="Global Active Power", xlab = "Global Active Power (kilowatts)", ylab = "Frequency", col = "Red")
 png("plot1.png", width = 480, height = 480)
 dev.off()
-
-## Plot 2 code
-
-plot(mine_data$Global_active_power ~ my_data$DateTime, type="1", xlab="", ylab="Global Actice Power(kilowatts)")
-
-## plot 3 code
-
-with(mine_data, {plot(sub_metering_1 ~ DateTime, type="1", xlab="", ylab="Energy Sub Metering")})
-line(mine_data$sub_metering_2 ~ mine_data$DateTime, col = 'Green')
-line(mine_data$sub_metering_3 ~ mine_data$DateTime, col = 'Red')
-legend("topright", lty=1, lwd=3, col=c("black", "Green", "Red"), legend=c("sub_metering_1", "sub_metyering_2", "sub_metering_3"))
-
-##plot 4 code
-
-par(mfrow=c(2,2))
-plot(mine_data$Global_active_power ~ my_data$DateTime, type="1")
-plot(mine_data$Voltage ~ my_data$DateTime, type="1")
-
-with(mine_data, {plot(sub_metering_1 ~ DateTime, type="1")})
-line(mine_data$sub_metering_2 ~ mine_data$DateTime, col = 'Green')
-line(mine_data$sub_metering_3 ~ mine_data$DateTime, col = 'Red')
-
-plolt(mine_data$Global_reactive_power ~ mine_data$DateTime, type="1")
